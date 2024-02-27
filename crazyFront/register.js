@@ -31,7 +31,7 @@ secondNameInput.addEventListener("keyup", () => {
 });
 
 userNameInput.addEventListener("keyup", () => {
-  if (userNameInput.value.length < 4) {
+  if (userNameInput.value.length < 6) {
     userNameAlert.classList.remove("hidden");
     userNameValid = false;
   } else {
@@ -43,8 +43,30 @@ userNameInput.addEventListener("keyup", () => {
 registerBtn.addEventListener("click", (event) => {
   event.preventDefault();
   if (firstNameValid && secondNameValid && userNameValid) {
-    console.log("salam");
+    let newUserData = {
+      firstName: firstNameInput.value,
+      lastName: secondNameInput.value,
+      userName: userNameInput.value,
+      profile: "./src/img/profile/5.jpg",
+    };
+    fetch("http://localhost:3000/api/users/", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newUserData),
+    }).then((res) => {
+      console.log(res);
+      inputCleaner();
+    });
   } else {
     alert("اطلاعات به درستی وارد نشده اند!!");
   }
 });
+
+const inputCleaner = () => {
+  firstNameInput.value = "";
+  secondNameInput.value = "";
+  userNameInput.value = "";
+  firstNameInput.focus();
+};

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body class="flex h-screen items-center justify-center bg-sky-300">
+    <form
+      class="flex w-96 flex-col items-center justify-center gap-10 rounded-2xl bg-white py-10"
+    >
+      <h1 class="text-3xl font-bold">ثبت نام</h1>
+      <div class="w-3/4">
+        <label for=""></label>
+        <div
+          class="flex items-center justify-center gap-5 rounded-xl border-2 border-slate-500 p-2"
+        >
+          <i class="fa fa-user text-slate-400" aria-hidden="true"></i>
+          <input
+            id="firstNameInput"
+            class="text-slate-600 outline-none"
+            type="text"
+            placeholder="نام"
+          />
+        </div>
+        <p id="firstNameAlert" class="mt-1 hidden px-2 font-bold text-red-600">
+          * نام باید بیشتر از 3 کاراکتر باشد
+        </p>
+      </div>
+      <div class="w-3/4">
+        <label for=""></label>
+        <div
+          class="flex items-center justify-center gap-5 rounded-xl border-2 border-slate-500 p-2"
+        >
+          <i class="fa fa-user text-slate-400" aria-hidden="true"></i>
+          <input
+            id="secondNameInput"
+            class="text-slate-600 outline-none"
+            type="text"
+            placeholder="نام خانوادگی"
+          />
+        </div>
+        <p id="secondNameAlert" class="mt-1 hidden px-2 font-bold text-red-600">
+          * نام خانوادگی باید بیشتر از 4 کاراکتر باشد
+        </p>
+      </div>
+      <div class="w-3/4">
+        <label for=""></label>
+        <div
+          class="flex items-center justify-center gap-5 rounded-xl border-2 border-slate-500 p-2"
+        >
+          <i class="fa fa-key text-slate-400" aria-hidden="true"></i>
+          <input
+            id="userNameInput"
+            class="text-slate-600 outline-none"
+            type="text"
+            placeholder="نام کاربری"
+          />
+        </div>
+        <p id="userNameAlert" class="mt-1 hidden px-2 font-bold text-red-600">
+          * نام کاربری باید بیشتر از 4 کاراکتر باشد
+        </p>
+      </div>
+      <button
+        type="submit"
+        id="registerBtn"
+        class="w-3/4 rounded-xl bg-slate-400 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-slate-700"
+      >
+        ثبت نام
+      </button>
+    </form>
+    <script src="./register.js"></script>
+  </body>
+</html>
