@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="./src/styles/style.css" />
   </head>
   <body>
+    <div
+      id="modalBg"
+      class="fixed left-0 top-0 z-10 hidden h-screen w-screen bg-slate-500 opacity-80 transition duration-300 ease-in-out"
+    ></div>
+    <div
+      id="modal"
+      class="absolute -top-56 left-1/2 z-50 flex h-48 w-80 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-2xl bg-white p-10 opacity-100 transition duration-300 ease-in-out"
+    >
+      <h2 class="text-2xl font-bold">کاربر حذف شود؟</h2>
+      <div class="flex justify-center gap-10">
+        <button
+          id="yesBtn"
+          class="flex items-center justify-center rounded-xl bg-red-600 px-6 py-2 font-bold text-white"
+        >
+          بله
+        </button>
+        <button
+          id="noBtn"
+          class="flex items-center justify-center rounded-xl bg-sky-600 px-6 py-2 font-bold text-white"
+        >
+          خیر
+        </button>
+      </div>
+    </div>
+
     <div class="container mx-auto">
       <div
         class="mt-6 flex items-center justify-between rounded-md px-5 py-3 shadow shadow-slate-300"
@@ -66,7 +91,7 @@
                   <i class="fa fa-user" aria-hidden="true"></i>
                   <p>نام</p>
                 </div>
-                <p>Saber</p>
+                <p id="firstNameSide">Saber</p>
               </div>
               <div
                 class="flex items-center justify-between border-t-2 border-slate-400 px-5 py-2"
@@ -75,7 +100,7 @@
                   <i class="fa fa-users" aria-hidden="true"></i>
                   <p>نام خانوادگی</p>
                 </div>
-                <p>Mirbagheri</p>
+                <p id="lastNameSide">Mirbagheri</p>
               </div>
               <div
                 class="flex items-center justify-between border-t-2 border-slate-400 px-5 py-2"
@@ -84,7 +109,7 @@
                   <i class="fa fa-book" aria-hidden="true"></i>
                   <p>تعداد دوره ها</p>
                 </div>
-                <p>35</p>
+                <p>0</p>
               </div>
             </div>
           </div>
@@ -119,9 +144,10 @@
             </div>
           </div>
           <div
+            id="usersWrapper"
             class="mt-5 flex flex-col items-stretch justify-center gap-2 rounded-lg p-5"
           >
-            <div
+            <!-- <div
               class="flex items-center justify-between rounded-xl border-2 p-5"
             >
               <div class="flex items-center justify-center gap-5">
@@ -154,10 +180,11 @@
                   حذف
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
+    <script src="./users.js"></script>
   </body>
 </html>
