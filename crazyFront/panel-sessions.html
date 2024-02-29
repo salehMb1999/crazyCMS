@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>panel-users</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body>
+    <div
+      id="modalBg"
+      class="fixed left-0 top-0 z-10 hidden h-screen w-screen bg-slate-500 opacity-80 transition duration-300 ease-in-out"
+    ></div>
+    <div
+      id="removeModal"
+      class="absolute left-1/2 top-1/2 z-50 hidden h-48 w-80 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-2xl bg-white p-10 opacity-100 transition duration-300 ease-in-out"
+    >
+      <h2 class="text-2xl font-bold">کاربر حذف شود؟</h2>
+      <div class="flex justify-center gap-10">
+        <button
+          id="yesBtn"
+          class="flex items-center justify-center rounded-xl bg-red-600 px-6 py-2 font-bold text-white"
+        >
+          بله
+        </button>
+        <button
+          id="noBtn"
+          class="flex items-center justify-center rounded-xl bg-sky-600 px-6 py-2 font-bold text-white"
+        >
+          خیر
+        </button>
+      </div>
+    </div>
+    <div
+      id="editModal"
+      class="absolute left-1/2 top-1/2 z-50 hidden h-[500px] w-[400px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-2xl bg-white opacity-100 transition duration-300 ease-in-out"
+    >
+      <h2 class="mb-7 text-2xl font-bold">ویرایش کاربر</h2>
+      <div class="flex flex-col items-stretch justify-center gap-5">
+        <div>
+          <div
+            class="flex items-center justify-start gap-5 rounded-lg border-2 p-1"
+          >
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input
+              id="userNameInput"
+              class="p-2 outline-none"
+              type="text"
+              placeholder="نام کاربری"
+            />
+          </div>
+          <p id="userNameAlert" class="mt-1 hidden px-2 font-bold text-red-600">
+            * نام کاربری باید بیشتر از 4 کاراکتر باشد
+          </p>
+        </div>
+
+        <div>
+          <div
+            class="flex items-center justify-start gap-5 rounded-lg border-2 p-1"
+          >
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input
+              id="firstNameInput"
+              class="p-2 outline-none"
+              type="text"
+              placeholder="نام"
+            />
+          </div>
+          <p
+            id="firstNameAlert"
+            class="mt-1 hidden px-2 font-bold text-red-600"
+          >
+            * نام باید بیشتر از 3 کاراکتر باشد
+          </p>
+        </div>
+
+        <div>
+          <div
+            class="flex items-center justify-start gap-5 rounded-lg border-2 p-1"
+          >
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input
+              id="secondNameInput"
+              class="p-2 outline-none"
+              type="text"
+              placeholder="نام خانوادگی"
+            />
+          </div>
+          <p
+            id="secondNameAlert"
+            class="mt-1 hidden px-2 font-bold text-red-600"
+          >
+            * نام خانوادگی باید بیشتر از 4 کاراکتر باشد
+          </p>
+        </div>
+
+        <button
+          id="editUserBtn"
+          class="rounded-lg bg-sky-400 p-2 font-bold text-white transition duration-300 ease-in-out hover:bg-sky-600"
+          type="submit"
+        >
+          به روزرسانی اطلاعات
+        </button>
+      </div>
+    </div>
+
+    <div class="container mx-auto">
+      <div
+        class="mt-6 flex items-center justify-between rounded-md px-5 py-3 shadow shadow-slate-300"
+      >
+        <div class="flex gap-5">
+          <div class="w-16 rounded-md">
+            <img
+              class="w-full rounded-md"
+              src="./src/img/profile/5.jpg"
+              alt="profile"
+            />
+          </div>
+          <div>
+            <h2 class="font-bold">Saber</h2>
+            <p class="text-slate-400">admin@gmail.com</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-7">
+          <i
+            class="fas fa-sun cursor-pointer rounded-md bg-yellow-400 p-2 text-2xl text-white shadow-md shadow-yellow-600 transition duration-300 ease-in-out hover:bg-yellow-500"
+          ></i>
+          <i
+            class="fa fa-bell cursor-pointer rounded-md bg-slate-400 p-2 text-2xl text-white shadow-md shadow-slate-600 transition duration-300 ease-in-out hover:bg-slate-500"
+            aria-hidden="true"
+          ></i>
+          <div
+            class="flex cursor-pointer items-center justify-center gap-2 self-stretch rounded-md bg-sky-400 px-4 text-white shadow-md shadow-sky-600 transition duration-300 ease-in-out hover:bg-sky-500"
+          >
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+            <p class="font-bold">خروج</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 flex justify-between gap-5">
+        <div class="h-[80vh] w-1/4 rounded-xl shadow-lg">
+          <div class="relative h-1/6 w-[100%] rounded-2xl bg-green-300">
+            <div
+              class="absolute -bottom-10 left-1/2 w-32 -translate-x-1/2 rounded-lg border-[8px] border-amber-300"
+            >
+              <img class="w-full" src="./src/img/profile/5.jpg" alt="profile" />
+            </div>
+          </div>
+          <div class="flex flex-col items-center justify-center">
+            <div class="pt-16 text-center">
+              <h2 class="font-bold">Crazy</h2>
+              <p class="text-slate-400">admin@gmail.com</p>
+            </div>
+            <div class="mt-5 flex w-full flex-col gap-5 px-10">
+              <div
+                class="flex items-center justify-between border-t-2 border-slate-400 px-5 py-2"
+              >
+                <div class="flex items-center justify-center gap-3">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <p>نام</p>
+                </div>
+                <p id="firstNameSide">Saber</p>
+              </div>
+              <div
+                class="flex items-center justify-between border-t-2 border-slate-400 px-5 py-2"
+              >
+                <div class="flex items-center justify-center gap-3">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <p>نام خانوادگی</p>
+                </div>
+                <p id="lastNameSide">Mirbagheri</p>
+              </div>
+              <div
+                class="flex items-center justify-between border-t-2 border-slate-400 px-5 py-2"
+              >
+                <div class="flex items-center justify-center gap-3">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  <p>تعداد دوره ها</p>
+                </div>
+                <p>0</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="h-[80vh] w-3/4 rounded-xl shadow-xl">
+          <div
+            class="flex h-[8%] items-center justify-between gap-x-5 border-b-2 px-10"
+          >
+            <div
+              class="flex w-1/4 cursor-pointer items-center justify-center gap-3 border-b-2 border-sky-400 border-transparent pb-5 font-bold text-slate-500 transition duration-300 ease-in-out"
+            >
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <p>کاربران</p>
+            </div>
+            <div
+              class="flex w-1/4 cursor-pointer items-center justify-center gap-3 border-b-2 border-transparent pb-5 font-bold text-slate-500 transition duration-300 ease-in-out hover:border-sky-400"
+            >
+              <i class="fa fa-tasks" aria-hidden="true"></i>
+              <p>مشخصات</p>
+            </div>
+            <div
+              class="flex w-1/4 cursor-pointer items-center justify-center gap-3 border-b-2 border-transparent pb-5 font-bold text-slate-500 transition duration-300 ease-in-out hover:border-sky-400"
+            >
+              <i class="fa fa-book" aria-hidden="true"></i>
+              <p>دوره ها</p>
+            </div>
+            <div
+              class="flex w-1/4 cursor-pointer items-center justify-center gap-3 border-b-2 border-transparent pb-5 font-bold text-slate-500 transition duration-300 ease-in-out hover:border-sky-400"
+            >
+              <i class="fas fa-ticket-alt"></i>
+              <p>فصل ها</p>
+            </div>
+          </div>
+          <div class="h-[92%] overflow-y-scroll px-5">
+            <div class="flex flex-col items-stretch justify-center">
+              <div
+                class="mt-10 flex w-full flex-col items-stretch justify-center"
+              >
+                <div class="flex w-full items-center justify-center gap-5">
+                  <div class="h-24 w-full">
+                    <div
+                      class="flex w-full items-center justify-start gap-3 rounded-lg border-2 px-3 py-3"
+                    >
+                      <i class="fa fa-text-height" aria-hidden="true"></i>
+                      <input
+                        class="w-full outline-none placeholder:font-bold"
+                        type="text"
+                        placeholder="نام فصل"
+                      />
+                    </div>
+                    <p
+                      id="emptyAlert"
+                      class="mt-1 hidden px-2 font-bold text-red-600"
+                    >
+                      * نباید خالی باشد
+                    </p>
+                  </div>
+                  <div class="h-24 w-full">
+                    <div
+                      class="flex w-full items-center justify-start gap-3 rounded-lg border-2 px-3 py-3"
+                    >
+                      <i class="fas fa-clock"></i>
+                      <input
+                        class="w-full outline-none placeholder:font-bold"
+                        type="text"
+                        placeholder="مدت فصل"
+                      />
+                    </div>
+                    <p
+                      id="emptyAlert"
+                      class="mt-1 hidden px-2 font-bold text-red-600"
+                    >
+                      * نباید خالی باشد
+                    </p>
+                  </div>
+                </div>
+                <div class="flex w-full items-center justify-center gap-5">
+                  <div class="h-24 w-full">
+                    <div
+                      class="flex w-full items-center justify-start gap-3 rounded-lg border-2 px-3 py-3"
+                    >
+                      <i class="fas fa-coins"></i>
+                      <input
+                        class="w-full outline-none placeholder:font-bold"
+                        type="text"
+                        placeholder="قیمت فصل"
+                      />
+                    </div>
+                    <p
+                      id="emptyAlert"
+                      class="mt-1 hidden px-2 font-bold text-red-600"
+                    >
+                      * نباید خالی باشد
+                    </p>
+                  </div>
+                  <div class="h-24 w-full">
+                    <div
+                      class="flex w-full items-center justify-start gap-3 rounded-lg border-2 px-3 py-3"
+                    >
+                      <i class="fas fa-book-open"></i>
+                      <input
+                        class="w-full outline-none placeholder:font-bold"
+                        type="text"
+                        placeholder="موضوع"
+                      />
+                    </div>
+                    <p
+                      id="emptyAlert"
+                      class="mt-1 hidden px-2 font-bold text-red-600"
+                    >
+                      * نباید خالی باشد
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-14 px-5 font-bold">
+                <label for="">رایگان</label>
+                <input type="checkbox" name="" id="" />
+              </div>
+              <button
+                class="my-10 rounded-xl bg-sky-400 p-3 font-bold text-white"
+              >
+                افزودن فصل جدید
+              </button>
+            </div>
+            <div>
+              <div class="flex justify-between rounded-xl border-2 p-5">
+                <div class="flex items-center justify-center gap-7">
+                  <p class="text-lg font-bold">نام فصل</p>
+                  <p class="text-sm">موضوع فصل</p>
+                </div>
+                <div class="flex items-center justify-center gap-7">
+                  <p class="rounded-lg bg-red-600 px-3 py-1 text-white">
+                    185000
+                  </p>
+                  <p><span>1</span>hr <span>30</span>min</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

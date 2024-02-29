@@ -71,6 +71,9 @@ const getAllUsers = () => {
 };
 window.addEventListener("load", getAllUsers);
 
+modalBg.addEventListener("click", () => {
+  closeModal();
+});
 const showModal = (userID) => {
   mainUser = userID;
   modalBg.classList.remove("hidden");
