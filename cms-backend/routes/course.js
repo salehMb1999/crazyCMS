@@ -23,12 +23,12 @@ router.post('/', (req, res) => {
 
     const newCourse = new Course({
         title: req.body.title,
-        body: req.body.body,
-        time: req.body.time,
+        // body: req.body.body,
+        // time: req.body.time,
         price: req.body.price,
-        students: req.body.students,
+        // students: req.body.students,
         category: req.body.category,
-        cover: req.body.cover,
+        // cover: req.body.cover,
         created_AT: date.toLocaleDateString('fa-IR', configs),
     }).save()
 
