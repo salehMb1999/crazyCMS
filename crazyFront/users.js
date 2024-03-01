@@ -26,7 +26,6 @@ const getAllUsers = () => {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
       usersWrapper.innerHTML = "";
       data.forEach((user) => {
         usersWrapper.insertAdjacentHTML(

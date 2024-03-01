@@ -9,6 +9,7 @@ const emptyAlert2 = $.getElementById("emptyAlert2");
 const emptyAlert3 = $.getElementById("emptyAlert3");
 const emptyAlert4 = $.getElementById("emptyAlert4");
 const checkBox = $.getElementById("checkBox");
+const sessionsWrapper = $.getElementById("sessionsWrapper");
 let isValid = null;
 let isFree = null;
 checkBox.addEventListener("change", () => {
@@ -29,6 +30,37 @@ const cleaner = () => {
   sessionDuration.value = "";
   sessionPrice.value = "";
   sessionCategory.value = "";
+};
+const getAllSessions = () => {
+  fetch("http://localhost:3000/api/sessions/", {
+    method: "GET",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((sessions) => {
+      sessionsWrapper.innerHTML = "";
+      sessions.forEach((session) => {
+        hour = Math.floor(session.time / 60);
+        min = session.time % 60;
+        console.log(session.time);
+        sessionsWrapper.insertAdjacentHTML(
+          "beforeend",
+          `<div class="flex justify-between rounded-xl border-2 p-5">
+                      <div class="flex items-center justify-center gap-7">
+                        <p class="text-lg font-bold"> ${session.title} </p>
+                        <p class="text-sm">${session.course}</p>
+                      </div>
+                      <div class="flex items-center justify-center gap-7">
+                        <p class="rounded-lg bg-red-600 px-3 py-1 text-white">
+                          ${session.price}
+                        </p>
+                        <p><span>${hour}</span>hr <span>${min}</span>min</p>
+                      </div>
+                    </div>`,
+        );
+      });
+    });
 };
 addSessionBtn.addEventListener("click", (event) => {
   if (!sessionName.value) {
@@ -75,9 +107,13 @@ addSessionBtn.addEventListener("click", (event) => {
       body: JSON.stringify(newSession),
     }).then((res) => {
       console.log(res);
-      cleaner()
+      cleaner();
     });
   } else {
     alert("اطلاعات به درستی وارد نشده اند!!");
   }
 });
+let hour = null;
+let min = null;
+
+window.addEventListener("load", getAllSessions());
