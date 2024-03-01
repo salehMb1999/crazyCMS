@@ -10,19 +10,26 @@ const emptyAlert3 = $.getElementById("emptyAlert3");
 const emptyAlert4 = $.getElementById("emptyAlert4");
 const checkBox = $.getElementById("checkBox");
 let isValid = null;
-
+let isFree = null;
 checkBox.addEventListener("change", () => {
   if (checkBox.checked) {
     sessionPrice.innerHTML = 0;
     sessionPrice.value = 0;
     sessionPrice.disabled = true;
+    isFree = true;
   } else {
     sessionPrice.innerHTML = "";
     sessionPrice.value = "";
     sessionPrice.disabled = false;
+    isFree = false;
   }
 });
-
+const cleaner = () => {
+  sessionName.value = "";
+  sessionDuration.value = "";
+  sessionPrice.value = "";
+  sessionCategory.value = "";
+};
 addSessionBtn.addEventListener("click", (event) => {
   if (!sessionName.value) {
     emptyAlert1.classList.remove("hidden");
@@ -54,13 +61,23 @@ addSessionBtn.addEventListener("click", (event) => {
   }
 
   if (isValid) {
-    let newSession = {};
-    fetch("http://localhost:3000/api/sessions", {
+    let newSession = {
+      title: sessionName.value,
+      time: sessionDuration.value,
+      price: sessionPrice.value,
+      course: sessionCategory.value,
+    };
+    fetch("http://localhost:3000/api/sessions/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(newSession),
+    }).then((res) => {
+      console.log(res);
+      cleaner()
     });
+  } else {
+    alert("اطلاعات به درستی وارد نشده اند!!");
   }
 });

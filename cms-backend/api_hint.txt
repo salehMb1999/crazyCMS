@@ -112,7 +112,7 @@ default route: localhost:3000/api/
     Api: /sessions
     method: POST
     body: {
-	title: '',
+	    title: '',
         time: '',
         isFree: '',
         course: '',
