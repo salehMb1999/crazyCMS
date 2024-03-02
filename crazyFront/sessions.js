@@ -10,8 +10,32 @@ const emptyAlert3 = $.getElementById("emptyAlert3");
 const emptyAlert4 = $.getElementById("emptyAlert4");
 const checkBox = $.getElementById("checkBox");
 const sessionsWrapper = $.getElementById("sessionsWrapper");
+const usersSection = $.getElementById("usersSection");
+const infosSectin = $.getElementById("infosSection");
+const coursesSection = $.getElementById("coursesSection");
+const sessionsSection = $.getElementById("sessionsSection");
+usersSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-users.html";
+});
+infosSectin.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-change-info.html";
+});
+coursesSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-courses.html";
+});
+
+sessionsSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-sessions.html";
+});
+
 let isValid = null;
 let isFree = null;
+window.addEventListener("load", () => {
+  let adminId = localStorage.getItem("loginId");
+  if (!adminId) {
+    location.href = "http://127.0.0.1:5500/crazyFront/login.html";
+  }
+});
 checkBox.addEventListener("change", () => {
   if (checkBox.checked) {
     sessionPrice.innerHTML = 0;
