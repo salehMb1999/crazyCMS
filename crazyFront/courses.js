@@ -11,8 +11,32 @@ const coursePriceAlert = $.getElementById("coursePriceAlert");
 const courseCategoryInput = $.getElementById("courseCategoryInput");
 const courseCategoryAlert = $.getElementById("courseCategoryAlert");
 const coursesWrapper = $.getElementById("coursesWrapper");
-
+const usersSection = $.getElementById("usersSection");
+const infosSectin = $.getElementById("infosSection");
+const coursesSection = $.getElementById("coursesSection");
+const sessionsSection = $.getElementById("sessionsSection");
 let isValid = null;
+
+usersSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-users.html";
+});
+infosSectin.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-change-info.html";
+});
+coursesSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-courses.html";
+});
+
+sessionsSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-sessions.html";
+});
+
+window.addEventListener("load", () => {
+  let adminId = localStorage.getItem("loginId");
+  if (!adminId) {
+    location.href = "http://127.0.0.1:5500/crazyFront/login.html";
+  }
+});
 const getAllCourses = () => {
   coursesWrapper.innerHTML = "";
   fetch("http://localhost:3000/api/courses/", {
