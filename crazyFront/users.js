@@ -14,6 +14,25 @@ const editUserBtn = $.getElementById("editUserBtn");
 const firstNameAlert = $.getElementById("firstNameAlert");
 const secondNameAlert = $.getElementById("secondNameAlert");
 const userNameAlert = $.getElementById("userNameAlert");
+const usersSection = $.getElementById("usersSection");
+const infosSectin = $.getElementById("infosSection");
+const coursesSection = $.getElementById("coursesSection");
+const sessionsSection = $.getElementById("sessionsSection");
+
+usersSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-users.html";
+});
+infosSectin.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-change-info.html";
+});
+coursesSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-courses.html";
+});
+
+sessionsSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-sessions.html";
+});
+
 let firstNameValid,
   secondNameValid,
   userNameValid = null;
@@ -68,6 +87,12 @@ const getAllUsers = () => {
       });
     });
 };
+window.addEventListener("load", () => {
+  let adminId = localStorage.getItem("loginId");
+  if (!adminId) {
+    location.href = "http://127.0.0.1:5500/crazyFront/login.html";
+  }
+});
 window.addEventListener("load", getAllUsers);
 
 modalBg.addEventListener("click", () => {
