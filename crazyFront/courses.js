@@ -10,9 +10,68 @@ const coursePriceInput = $.getElementById("coursePriceInput");
 const coursePriceAlert = $.getElementById("coursePriceAlert");
 const courseCategoryInput = $.getElementById("courseCategoryInput");
 const courseCategoryAlert = $.getElementById("courseCategoryAlert");
+const coursesWrapper = $.getElementById("coursesWrapper");
 
 let isValid = null;
-
+const getAllCourses = () => {
+  coursesWrapper.innerHTML = "";
+  fetch("http://localhost:3000/api/courses/", {
+    method: "GET",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      data.forEach((course) => {
+        coursesWrapper.insertAdjacentHTML(
+          "afterbegin",
+          `<div class="flex rounded-xl shadow shadow-slate-500">
+      <div class="w-1/3 rounded-s-xl">
+        <img
+          class="w-full rounded-s-xl"
+          src="./src/img/course/course.png"
+          alt="course"
+        />
+      </div>
+      <div
+        class="flex w-2/3 flex-col items-stretch justify-between rounded-e-xl"
+      >
+        <div class="flex flex-col gap-3 px-5 pt-2">
+          <p class="cursor-pointer text-xl font-bold text-amber-600">
+            ${course.title}
+          </p>
+          <p class="text-slate-500">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+            و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه
+            روزنامه و مجله در ستون و سطرآنچنان که لازم است
+          </p>
+        </div>
+        <div
+          class="flex items-center justify-between rounded-bl-xl bg-slate-100 px-5 py-2 text-blue-500"
+        >
+          <div class="flex items-center justify-center gap-10">
+            <div class="flex items-center justify-center gap-3">
+              <i class="fas fa-coins"></i>
+              <p>${course.price}</p>
+            </div>
+            <div class="flex items-center justify-center gap-3">
+              <i class="fa fa-folder" aria-hidden="true"></i>
+              <p>${course.category}</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center gap-3">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <p>500</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`,
+        );
+      });
+    });
+};
 addNewCourseBtn.addEventListener("click", () => {
   modalBg.classList.remove("hidden");
   addCourseModal.classList.remove("hidden");
@@ -69,5 +128,8 @@ addCourseInModalBtn.addEventListener("click", () => {
   }).then((res) => {
     console.log(res);
     closeModal();
+    getAllCourses();
   });
 });
+
+window.addEventListener("load", getAllCourses);
