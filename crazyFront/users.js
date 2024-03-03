@@ -18,6 +18,7 @@ const usersSection = $.getElementById("usersSection");
 const infosSectin = $.getElementById("infosSection");
 const coursesSection = $.getElementById("coursesSection");
 const sessionsSection = $.getElementById("sessionsSection");
+const logOutBtn = $.getElementById("logOutBtn");
 
 const topName = $.getElementById("topName");
 const topEmail = $.getElementById("topEmail");
@@ -51,6 +52,9 @@ const getMainAdmin = () => {
     });
 };
 
+logOutBtn.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/login.html";
+});
 window.addEventListener("load", getMainAdmin);
 
 usersSection.addEventListener("click", () => {

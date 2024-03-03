@@ -22,7 +22,10 @@ const topName = $.getElementById("topName");
 const topEmail = $.getElementById("topEmail");
 const sideUserName = $.getElementById("sideUserName");
 const sideEmail = $.getElementById("sideEmail");
-
+const logOutBtn = $.getElementById("logOutBtn");
+logOutBtn.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/login.html";
+});
 let mainAdminID = null;
 const getMainAdmin = () => {
   mainAdminID = localStorage.getItem("loginId");

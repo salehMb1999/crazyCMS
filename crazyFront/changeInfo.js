@@ -12,6 +12,27 @@ const newPassword = $.getElementById("newPassword");
 const newPasswordConfirm = $.getElementById("newPasswordConfirm");
 const emailInput = $.getElementById("emailInput");
 const changeBtn = $.getElementById("changeBtn");
+const usersSection = $.getElementById("usersSection");
+const infosSectin = $.getElementById("infosSection");
+const coursesSection = $.getElementById("coursesSection");
+const sessionsSection = $.getElementById("sessionsSection");
+const logOutBtn = $.getElementById("logOutBtn");
+logOutBtn.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/login.html";
+});
+usersSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-users.html";
+});
+infosSectin.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-change-info.html";
+});
+coursesSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-courses.html";
+});
+
+sessionsSection.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/crazyFront/panel-sessions.html";
+});
 
 let mainAdminID = null;
 const getMainAdmin = () => {
