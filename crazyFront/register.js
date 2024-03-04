@@ -31,7 +31,7 @@ secondNameInput.addEventListener("keyup", () => {
 });
 
 userNameInput.addEventListener("keyup", () => {
-  if (userNameInput.value.length < 6) {
+  if (userNameInput.value.length < 4) {
     userNameAlert.classList.remove("hidden");
     userNameValid = false;
   } else {
